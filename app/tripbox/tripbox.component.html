@@ -1,0 +1,2 @@
+<button *ngFor="let trip of trips" (click)="getTrip(trip)">{{trip.tripDate}}</button>
+<app-trip-detail [selectedTrip]="selectedTrip"></app-trip-detail>

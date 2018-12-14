@@ -1,0 +1,11 @@
+<div *ngIf="selectedTrip">
+  <div  class="detailDate">
+    {{selectedTrip.tripDate}}
+  </div>
+  <div class="detailInfo">
+    <div><span>{{selectedTrip.tripVehicle}}</span></div>
+    <div><span>集合地点</span><span>{{selectedTrip.tripAss}}</span></div>
+    <div><span>集合时间</span><span>{{selectedTrip.tripTime}}</span></div>
+    <div><span>行程</span><span>{{selectedTrip.tripPlace}}</span></div>
+  </div>
+</div>
