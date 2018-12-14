@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>mix</title>
+	<script src="https://vuejs.org/js/vue.js"></script>
+</head>
+<body>
+
+<div id="trip-demo">
+	<trip-title
+		v-for="trip in tripList"
+		v-bind:key="trip.tripDate"
+		v-bind:trip="trip"
+		v-on:getdate="selectedtrip = trip"
+	>	
+	</trip-title>
+	<trip-detail
+		v-bind:trip="selectedtrip"
+	></trip-detail>
+</div>
+
+<!-- built files will be auto injected -->
+<script type="text/javascript">
+
+Vue.component('trip-title', {
+	props: ['trip'],
+	template: `
+			<button v-on:click="$emit('getdate','trip')">
+				{{trip.tripDate}}
+			</button>
+	`
+})
+
+Vue.component('trip-detail', {
+	props:['trip'],
+	template: `
+	<div>
+	<div  class="detailDate">
+		{{trip.tripDate}}
+	</div>
+	<div class="detailInfo">
+		<div><span>{{trip.tripVehicle}}</span></div>
+		<div><span>集合地点</span><span>{{trip.tripAss}}</span></div>
+		<div><span>集合时间</span><span>{{trip.tripTime}}</span></div>
+		<div><span>行程</span><span>{{trip.tripPlace}}</span></div>
+	</div>
+	</div>
+	`
+})
+
+new Vue({
+	el: '#trip-demo',
+	data: {
+		tripList : [
+			{tripDate:"2018-01-01" , tripVehicle:"大巴" , tripAss:"大堂" , tripTime:"2:00-1" , tripPlace:"海边" },
+			{tripDate:"2018-01-02" , tripVehicle:"飞机" , tripAss:"大堂" , tripTime:"2:00-2" , tripPlace:"山谷" },
+			{tripDate:"2018-01-03" , tripVehicle:"大巴" , tripAss:"大堂" , tripTime:"2:00-1" , tripPlace:"海边" },
+			{tripDate:"2018-01-04" , tripVehicle:"飞机" , tripAss:"大堂" , tripTime:"2:00-2" , tripPlace:"山谷" },
+			{tripDate:"2018-01-05" , tripVehicle:"大巴" , tripAss:"侧门" , tripTime:"2:00-1" , tripPlace:"海边" },
+			{tripDate:"2018-01-06" , tripVehicle:"飞机" , tripAss:"侧门" , tripTime:"2:00-2" , tripPlace:"山谷" },
+			{tripDate:"2018-01-07" , tripVehicle:"大巴" , tripAss:"侧门" , tripTime:"2:00-1" , tripPlace:"海边" },
+		],
+		selectedtrip: {tripDate:"2018-01-01" , tripVehicle:"大巴" , tripAss:"大堂" , tripTime:"2:00-1" , tripPlace:"海边" }
+	}
+})
+		</script>
+	</body>
+</html>
